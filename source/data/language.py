@@ -1,0 +1,3 @@
+LANGUAGE = {
+  "title": "MPass",
+}
