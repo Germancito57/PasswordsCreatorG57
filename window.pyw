@@ -1,4 +1,4 @@
-from src.app import App
+from source.app import App
 
 if __name__ == "__main__":
     App();
