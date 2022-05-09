@@ -48,4 +48,4 @@ jobs:
           asset_name: testName.exe
           tag: ${{ github.ref }}
           overwrite: true
-          body: 'This is my release text'
+          body: 'test'
