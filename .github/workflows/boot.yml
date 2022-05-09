@@ -33,11 +33,17 @@ jobs:
       - name: 'Build executable for Windows'
         run: pyinstaller --onefile --noconsole --name testName --icon source/data/assets/icon.ico source/main.py
 
+      - name: 'print'
+        run: |
+          ls
+          cd dist
+          ls
+
       - name: 'Create a release'
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dist/testName.exe
+          file: ./dist/testName.exe
           asset_name: mything
           tag: ${{ github.ref }}
           overwrite: true
