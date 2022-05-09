@@ -36,8 +36,8 @@ jobs:
       - name: 'Create a release'
         uses: svenstaro/upload-release-action@v2
         with:
-          release_name: 'testName ${{ github.ref }}'
-          asset_name: 'testName.exe | Windows'
+          release_name: testName ${{ github.ref }}
+          asset_name: testName.exe | Windows
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./dist/testName.exe
           tag: ${{ github.ref }}
