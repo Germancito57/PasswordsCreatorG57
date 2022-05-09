@@ -38,7 +38,6 @@ jobs:
           dir
           cd dist
           echo "Files in dist:"
-          cd testName
           dir
 
       - name: 'Create a release'
