@@ -34,4 +34,6 @@ jobs:
         run: pyinstaller --onefile --noconsole --name testName --icon source/data/assets/icon.ico source/main.py
 
       - name: 'show '
-        run: 'ls -l'
+        run: |
+          cd dist
+          ls -l
