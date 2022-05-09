@@ -1,0 +1,42 @@
+name: 'Boot'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cancel_previous_workflow:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: 'Cancel previous workflow'
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+  checkout:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+  create_exe_file:
+    needs: [checkout]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: 'PyInstaller build'
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: './'
+
+  upload_exe_file:
+    needs: [create_exe_file]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: 'Upload exe file'
+        uses: actions/upload-artifact@v2
+        with:
+          name: name-of-artifact
+          path: ./dist/windows
