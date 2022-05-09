@@ -15,7 +15,6 @@ jobs:
           access_token: ${{ github.token }}
 
   create_exe_file:
-    needs: [checkout]
     runs-on: ubuntu-20.04
     steps:
       - name: 'Checkout'
