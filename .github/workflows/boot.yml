@@ -26,6 +26,8 @@ jobs:
     needs: [checkout]
     runs-on: ubuntu-20.04
     steps:
+      - name: 'test'
+        run: 'ls -l linxu'
       - name: 'PyInstaller build'
         uses: JackMcKew/pyinstaller-action-windows@main
         with:
