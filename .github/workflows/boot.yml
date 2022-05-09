@@ -46,6 +46,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./dist/testName.exe
           asset_name: testName.exe
-          tag: ${{ github.ref }}
+          tag: asd
           overwrite: true
           body: 'test'
