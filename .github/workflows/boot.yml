@@ -14,20 +14,12 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-  checkout:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Install dependencies'
-        run: 'ls -l'
-
   create_exe_file:
     needs: [checkout]
     runs-on: ubuntu-20.04
     steps:
-      - name: 'test'
-        run: 'ls -l'
+      - name: 'Checkout'
+        uses: actions/checkout@v2
       - name: 'PyInstaller build'
         uses: JackMcKew/pyinstaller-action-windows@main
         with:
