@@ -38,6 +38,7 @@ jobs:
           ls
           cd dist
           echo "Files in dist:"
+          cd testName
           ls
 
       - name: 'Create a release'
