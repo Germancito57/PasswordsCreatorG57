@@ -15,7 +15,7 @@ jobs:
           access_token: ${{ github.token }}
 
   create_exe_file:
-    runs-on: ubuntu-20.04
+    runs-on: windows-2022
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -35,18 +35,18 @@ jobs:
 
       - name: 'print'
         run: |
-          ls
+          dir
           cd dist
           echo "Files in dist:"
           cd testName
-          ls
+          dir
 
       - name: 'Create a release'
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./dist/testName.exe
-          asset_name: mything.exe
+          file: ./dist/
+          asset_name: testName.exe
           tag: ${{ github.ref }}
           overwrite: true
           body: 'This is my release text'
