@@ -15,23 +15,7 @@ jobs:
           access_token: ${{ github.token }}
 
   create_exe_file:
-    strategy:
-      matrix:
-        include:
-          - os: macos-latest
-            TARGET: macos
-            CMD_BUILD: >
-              pyinstaller --onefile --noconsole --name testName --icon source/data/assets/icon.ico source/main.py &&
-              cd dist/ &&
-              zip -r9 testName testName.app/
-            OUT_FILE_NAME: testName.zip
-
-          - os: windows-latest
-            TARGET: windows
-            CMD_BUILD: pyinstaller --onefile --noconsole --name testName --icon source/data/assets/icon.ico source/main.py
-            OUT_FILE_NAME: testName.exe
-
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -46,16 +30,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 'Build executable for ${{matrix.TARGET}}'
-        run: ${{matrix.CMD_BUILD}}
+      - name: 'Build executable for Windows'
+        run: pyinstaller --onefile --noconsole --name testName --icon source/data/assets/icon.ico source/main.py
 
       - name: 'Create a release'
         uses: svenstaro/upload-release-action@v2
         with:
-          release_name: '{{ matrix.TARGET }}'
-          asset_name: ${{ matrix.OUT_FILE_NAME}}
+          release_name: 'testName ${{ github.ref }}'
+          asset_name: 'testName.exe | Windows'
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./dist/${{ matrix.OUT_FILE_NAME}}
+          file: ./dist/testName.exe
           tag: ${{ github.ref }}
           overwrite: true
-          body: '{{ matrix.TARGET }}'
+          body: 'testName | Executable for Windows'
