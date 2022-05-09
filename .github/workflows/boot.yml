@@ -43,8 +43,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./dist/testName
-          asset_name: mything
+          file: ./dist/testName.exe
+          asset_name: mything.exe
           tag: ${{ github.ref }}
           overwrite: true
           body: 'This is my release text'
