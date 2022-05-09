@@ -27,7 +27,7 @@ jobs:
 
       - name: 'show'
         run: >
-          cd source
+          cd source &&
           ls -l
 
       - name: 'Upload exe file'
