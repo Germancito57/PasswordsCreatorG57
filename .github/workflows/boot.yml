@@ -1,4 +1,4 @@
-name: 'Boot'
+name: 'Build'
 
 on:
   push:
@@ -20,18 +20,18 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v2
 
-      - name: 'Create exe file'
-        uses: JackMcKew/pyinstaller-action-windows@main
+      - name: 'Setup Python'
+        uses: actions/setup-python@v2
         with:
-          path: source
+          python: 3.8
 
-      - name: 'show'
-        run: >
-          cd source &&
-          ls -l
+      - name: 'Install dependencies'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: 'Upload exe file'
-        uses: actions/upload-artifact@v2
-        with:
-          name: exe
-          path: source/dist/windows
+      - name: 'Build executable for Windows'
+        run: pyinstaller --onefile --noconsole --name testName --icon source/data/assets/icon.ico source/main.py
+
+      - name: 'show '
+        run: 'ls -l'
