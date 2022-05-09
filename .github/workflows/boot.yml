@@ -37,6 +37,7 @@ jobs:
         run: |
           ls
           cd dist
+          echo "Files in dist:"
           ls
 
       - name: 'Create a release'
