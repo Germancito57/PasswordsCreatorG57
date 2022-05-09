@@ -20,7 +20,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Install dependencies'
-        run: 'ls'
+        run: 'ls -l'
 
   create_exe_file:
     needs: [checkout]
