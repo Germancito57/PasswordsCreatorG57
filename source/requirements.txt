@@ -1,6 +1,3 @@
-tkinter
-os
-pickle
 altgraph==0.17
 colored==1.4.2
 future==0.18.2
