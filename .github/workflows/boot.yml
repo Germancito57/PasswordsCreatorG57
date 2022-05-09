@@ -19,17 +19,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+
       - name: 'Create exe file'
         uses: JackMcKew/pyinstaller-action-windows@main
         with:
           path: source
-      - name: 'Upload exe file'
-        uses: actions/upload-artifact@v2
 
-  upload_exe_file:
-    needs: [create_exe_file]
-    runs-on: ubuntu-20.04
-    steps:
       - name: 'Upload exe file'
         uses: actions/upload-artifact@v2
         with:
