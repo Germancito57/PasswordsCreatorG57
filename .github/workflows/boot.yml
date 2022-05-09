@@ -26,7 +26,9 @@ jobs:
           path: source
 
       - name: 'show'
-        run: 'ls -l'
+        run: >
+          cd source
+          ls -l
 
       - name: 'Upload exe file'
         uses: actions/upload-artifact@v2
