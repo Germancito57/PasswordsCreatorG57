@@ -1,8 +1,8 @@
 import tkinter
 
-from ..data.gui import GUI
-from ..data.language import LANGUAGE
-from ..utils.password import addPassword, deletePassword, getPasswords
+from data.gui import GUI
+from data.language import LANGUAGE
+from utils.password import addPassword, deletePassword, getPasswords
 
 
 def setAppProperties(window):
