@@ -2,7 +2,7 @@ import tkinter
 
 window = tkinter.Tk()
 
-button = tkinter.Button(window, text="Click Me new version!")
+button = tkinter.Button(window, text="Click Me new version!!")
 button.pack()
 
 button2 = tkinter.Button(window, text="Click 222!")
