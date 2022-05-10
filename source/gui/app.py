@@ -4,6 +4,8 @@ from data.gui import GUI
 from data.language import LANGUAGE
 from utils.password import addPassword, deletePassword, getPasswords
 
+from gui.frame import Frame
+
 
 def setAppProperties(window):
   window.title(LANGUAGE["title"])
@@ -12,38 +14,12 @@ def setAppProperties(window):
   window.iconbitmap('source/data/assets/icon.ico')
 
 
-def hola():
-  addPassword({
-    "title": "dd",
-    "value": 123456,
-  })
-
-def deeleee():
-  deletePassword(2)
-  passwords = getPasswords()
-  print(passwords)
-
-
 def createApp():
   window = tkinter.Tk()
   setAppProperties(window)
 
-  button = tkinter.Button(window, text="Click Me!", command=hola)
-  button.pack()
-
-  button2 = tkinter.Button(window, text="Click 222!", command=deeleee)
-  button2.pack()
-
-
-  
-
-  list = tkinter.Listbox(window)
-  list.pack()
-  passwords = getPasswords()
-  print(passwords)
-  for id in passwords:
-    print(passwords[id]["title"] + " " + str(passwords[id]["value"]))
-    list.insert(id, passwords[id]["title"])
-    
+  left_frame = Frame(window, dict(bg="blue", width=300, height=GUI["dimensions"]["height"]), "left", "y")
+  right_frame = Frame(window, dict(bg="red", width=GUI["dimensions"]["width"] - 300, height=GUI["dimensions"]["height"]), "right", "y")
   window.mainloop()
 
+  
