@@ -1,8 +1,17 @@
 import os
 import pickle
 
+import gui.app as app
+
 path = os.getenv('APPDATA') + "\data.pkl"
 
+def searchPassword(input):
+  name = input.get()
+  elements = getPasswords()
+  app.list.delete(0, "end")
+  for element in elements:
+    if name.lower() in elements[element]["title"].lower():
+      app.list.insert("end", elements[element]["title"])
 
 def deletePassword(id):
   passwords = getPasswords()
@@ -12,7 +21,6 @@ def deletePassword(id):
 
 def addPassword(password):
   passwords = getPasswords()
-  password["value"] = len(passwords) + 1
   passwords[len(passwords) + 1] = password
   savePasswords(passwords)
   return password
