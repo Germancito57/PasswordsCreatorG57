@@ -21,6 +21,7 @@ def deletePassword(id):
 
 def addPassword(password):
   passwords = getPasswords()
+  password["id"] = len(passwords) + 1
   passwords[len(passwords) + 1] = password
   savePasswords(passwords)
   return password
