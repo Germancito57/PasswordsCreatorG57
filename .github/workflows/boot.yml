@@ -31,7 +31,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: 'Build executable for Windows'
-        run: pyinstaller --onefile --noconsole --name testName --icon source/data/assets/icon.ico source/main.py
+        run: pyinstaller --onefile --noconsole --name MPass --icon source/data/assets/icon.ico source/main.py
 
       - name: 'Create release'
         id: create_release
@@ -40,7 +40,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: testName ${{ github.ref }}
+          release_name: MPass ${{ github.ref }}
           draft: false
           prerelease: false
 
@@ -51,6 +51,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/testName.exe
-          asset_name: testName.exe
+          asset_path: ./dist/MPass.exe
+          asset_name: MPass.exe
           asset_content_type: application/executable
